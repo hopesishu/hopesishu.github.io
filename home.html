@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@latest/umd/react.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@material-ui/core@latest/umd/material-ui.development.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/babel-standalone@latest/babel.min.js" crossorigin="anonymous"></script>
+    <!-- Script for PropTypes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.min.js" integrity="sha512-ssNhh7jlzc+K93ckIlSXFHHz6fSFv0l619WOv8xbFNRbFOujbasb42LVMOggDrQR1ScJncoWb+KAJx1uF3ipjw==" crossorigin="anonymous"></script>
+    <!-- Typewriting effect -->
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <!-- Fonts to support Material Design -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+    <!-- Icons to support Material Design -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <!-- Nunito Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>hope</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const {
+            colors,
+            CssBaseline,
+            ThemeProvider,
+            Typography,
+            Container,
+            makeStyles,
+            createTheme,
+            Box,
+            SvgIcon,
+            Link,
+            Grid,
+            Card,
+            CardContent,
+            CardActions,
+            Button,
+            useState,
+            Tabs,
+            Tab,
+            Grow,
+            Tooltip,
+            IconButton,
+            List,
+            ListItem,
+            ListItemText,
+            Hidden
+        } = MaterialUI;
+
+        // Create a theme instance.
+        const theme = createTheme({
+            typography: {
+                fontFamily: [
+                    '"Nunito"'
+                ].join(','),
+                fontSize: 14
+            },
+            palette: {
+                text: {
+                    primary: '#FFFFFF',     // main text color (textPrimary)
+                    secondary: '#58F5E3',   // accent color (textSecondary)
+                    section: '#6F6B7A'
+                },
+                primary: {                  
+                    main: '#37304C',        // main color (card background)
+                    contrastText: '#FFFFFF' // white text (card text)
+                },
+                secondary: {                
+                    main: '#58F5E3',        // accent color (active tabpanel)
+                },
+                background: {
+                    default: '#1F1A30',     // website background
+                },
+            },
+        });
+
+        function SectionLinks() {
+            return (
+                <div>
+                    <Typography variant="body1" color="textSecondary">
+                        <Link color="inherit">home</Link>
+                    </Typography>
+                    <Typography variant="body1" color="textSecondary">
+                        <Link color="inherit">about me</Link>
+                    </Typography>
+                    <Typography variant="body1" color="textSecondary"> 
+                        <Link color="inherit">experience</Link>
+                    </Typography>
+                    <Typography variant="body1" color="textSecondary">
+                        <Link color="inherit">projects</Link>
+                    </Typography>
+                </div>
+            );
+        }
+
+        function AboutMeSection() {
+            const classes = useStyles();
+            return (
+                <Box mb={4}>
+                    <Typography variant="h3" gutterBottom className={classes.sectionTitle}>
+                        {'// about me'}
+                    </Typography>
+                    <Grid container spacing={2}>
+                        <Grid item md={11}>
+                            <Box mb={2}>
+                                <Typography variant="body1" align="justify" style={{fontSize: '18px'}} gutterBottom>
+                                    i am currently studying <b>computer engineering</b> at Nanyang Technological University, with an elective focus in cybersecurity and data science.
+                                    i have an interest in human-computer interaction and frontend development. in my free time, i play the guitar &#127928; and care for my many plants and succulents &#127797; 
+                                </Typography>
+                            </Box>
+                            <Typography variant="body1" style={{fontSize: '18px'}} className={classes.relevantTech}>
+                                here are some of the technologies i am currently working with:
+                            </Typography>
+                            <Typography variant="overline" style={{fontSize: '16px'}} className={classes.relevantTech}>
+                                ReactJS / NodeJS / JavaScript / Python / Java / HTML&CSS
+                            </Typography>
+                        </Grid>
+                        <Grid item md={1}>
+                            <Tooltip placement="top" title="let's connect :-)" aria-label="lets connect">
+                                <Card className={classes.cardSocial}>
+                                    <CardContent style={{padding: 4}}>
+                                        <Hidden smDown>
+                                            <Box align="center">
+                                                <IconButton target="_blank" href="https://github.com/hopesishu" id="icon"><GitHubIcon/></IconButton>
+                                            </Box>
+                                            <Box align="center">
+                                                <IconButton target="_blank" href="https://www.linkedin.com/in/hopesishu/" id="icon"><LinkedInIcon/></IconButton>
+                                            </Box>
+                                            <Box align="center">
+                                                <IconButton target="_blank" href="mailto:hopesishu@example.com" id="icon"><GoogleIcon/></IconButton>
+                                            </Box>
+                                        </Hidden>
+                                        <Hidden mdUp>
+                                            <IconButton target="_blank" href="https://github.com/hopesishu" id="icon"><GitHubIcon/></IconButton>
+                                            <IconButton target="_blank" href="https://www.linkedin.com/in/hopesishu/" id="icon"><LinkedInIcon/></IconButton>
+                                            <IconButton target="_blank" href="mailto:hopesishu@example.com" id="icon"><GoogleIcon/></IconButton>
+                                        </Hidden>
+                                    </CardContent>
+                                </Card>
+                            </Tooltip>
+                        </Grid>
+                    </Grid>
+                </Box>
+            )
+        }
+        function ExperienceSection() {
+            const classes = useStyles();
+            const [value, setValue] = React.useState(0)
+            const [grow, setGrow] = React.useState(true)
+            const handleChange = (event, newValue) => {
+                setValue(newValue);
+                setGrow(true)
+            }  
+
+            function TabPanel(props) {
+                const { children, value, index, ...other } = props;
+                return (
+                    <div
+                        role="tabpanel"
+                        hidden={value !== index}
+                        id={`simple-tabpanel-${index}`}
+                        aria-labelledby={`simple-tab-${index}`}
+                        {...other}
+                    >
+                        {value === index && (
+                        <Grow in={grow}>
+                            <Card className={classes.cardExp}>
+                                <CardContent>
+                                    {children}
+                                </CardContent>
+                            </Card>
+                        </Grow>
+                        )}
+                    </div>
+                );
+            }
+            TabPanel.propTypes = {
+                children: PropTypes.node,
+                index: PropTypes.any.isRequired,
+                value: PropTypes.any.isRequired,
+            };
+            function a11yProps(index) {
+                return {
+                    id: `simple-tab-${index}`,
+                    'aria-controls': `simple-tabpanel-${index}`,
+                };
+            }
+
+            return (
+                <Box style={{minHeight: "60vh"}} mb={4}>
+                    <Typography variant="h3" gutterBottom className={classes.sectionTitle}>
+                        {'// experience'}
+                    </Typography>
+                    <Grid container spacing={3}>
+                        <Grid item md={3} xs={12}>
+                            <Tabs indicatorColor="secondary" textColor="inherit" orientation="vertical" value={value} onChange={handleChange}>
+                                <Tab label="Housing & Development Board" {...a11yProps(0)} />
+                                <Tab label="HuNet Pte Ltd" {...a11yProps(1)} />
+                            </Tabs>
+                        </Grid>
+                        <Grid item md={9} xs={12}>
+                            <TabPanel value={value} index={0}>
+                                <Box display={{xs: "block", sm: "flex"}}>
+                                    <Typography variant="h5">
+                                        UI/UX Designer&nbsp;
+                                    </Typography>
+                                    <Typography variant="h5" color="textSecondary">
+                                        @ Housing & Development Board
+                                    </Typography>
+                                </Box>
+
+                                <Typography variant="overline" className={classes.relevantTech}>
+                                    Relevant Technologies: ReactJS, MaterialUI, Figma, Node
+                                </Typography>
+                                <List>
+                                    <ListItem>
+                                        <ListItemText>
+                                            Brainstormed and created low-fidelity prototypes to revamp HDB’s “MyHDBPage” using Figma
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem>
+                                        <ListItemText>
+                                            Translated prototypes and wireframes into webpages in accordance to HDB’s themes and standards using HTML and CSS.                                         
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem>
+                                        <ListItemText>
+                                            Developed an automation tool to automate front-end web development and accessibility testing checks using Node.js, Puppeteer, JavaScript, and external libraries such as Axe-Core 
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem>
+                                        <ListItemText>
+                                            Contributed to HDB’s Intranet Design System, helping to design and develop new components for cohesiveness across all webpages, using React.js
+                                        </ListItemText>
+                                    </ListItem>
+                                </List>
+                            </TabPanel>
+                            <TabPanel value={value} index={1}>
+                                <Box display={{xs: "block", sm: "flex"}}>
+                                    <Typography variant="h5">
+                                        Frontend Web Developer&nbsp;
+                                    </Typography>
+                                    <Typography variant="h5" color="textSecondary">
+                                        @ HuNet Pte Ltd
+                                    </Typography>
+                                </Box>
+                                <Typography variant="overline" className={classes.relevantTech}>
+                                    Relevant Technologies: Django, Bootstrap
+                                </Typography>
+                                <List>
+                                    <ListItem>
+                                        <ListItemText>
+                                            Collaborated in a team of 3 to present and deliver a Performance Metrics System website, as well as an Overtime System webapp that will be used by our clients
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem>
+                                        <ListItemText>
+                                            Designed and implemented responsive web pages with the use of HTML, CSS, and JavaScript. Utilized frameworks such as Django, Bootstrap, Material, and jQuery to aid in front-end web development                                      
+                                        </ListItemText>
+                                    </ListItem>
+                                    <ListItem>
+                                        <ListItemText>
+                                            Addressed clients directly through weekly meetings to understand and meet their needs and requirements
+                                        </ListItemText>
+                                    </ListItem>
+                                </List>
+                            </TabPanel>
+                        </Grid>
+                    </Grid>
+                </Box>
+            )
+        }
+        function ProjectsSection() {
+            const classes = useStyles();
+            return (
+                <Box mb={4}>
+                    <Typography variant="h3" gutterBottom className={classes.sectionTitle}>
+                        {'// projects'}
+                    </Typography>
+                    <Grid container spacing={3}>
+                        <Grid item md={4} style={{display: 'flex'}}>
+                            <ProjectCard 
+                                projectName="ChineseCalenarBot"
+                                projectDesc="telegram bot built using Python that converts Gregorian calendar dates into Lunar calendar dates." 
+                                githubLink="https://github.com/hopesishu/chinese-calendar-bot"/>
+                        </Grid>
+                        <Grid item md={4} style={{display: 'flex'}}>
+                            <ProjectCard 
+                                projectName="Frontend Automation Tool"
+                                projectDesc=" webapp built with a NodeJS backend server, using Bootstrap as the frontend framework.
+                                it utilises Puppeteer, an automated testing framework to parse websites, determining if they pass frontend and accessibility testing checks."
+                                githubLink="https://github.com/hopesishu/frontend-automation" />
+                        </Grid>
+                        <Grid item md={4} style={{display: 'flex'}}>
+                            <ProjectCard 
+                                projectName="ConnectMe"
+                                projectDesc="Andoid mobile app built using Android SDK, utilising data from data.gov. it connects users to nearby hawker centres and park connectors." 
+                                githubLink="https://github.com/hopesishu/CZ2006-softwareeng" />
+                        </Grid>
+                    </Grid>
+                </Box>
+            )
+        }
+        
+        function ProjectCard({ projectName, projectDesc, githubLink }) {
+            const classes = useStyles();
+            const [hovered, setHovered] = React.useState(false)
+            const handleHovered = () => {
+                setHovered(true)
+            }   
+            const handleNotHovered = () => {
+                setHovered(false)
+            }
+
+            return (
+                <Card 
+                className={classes.card}
+                // className={hovered ? classes.cardHover : classes.card} 
+                variant="outlined" 
+                onMouseOver={handleHovered} 
+                onMouseOut={handleNotHovered}
+                >
+                    <CardContent>
+                        <Typography variant="h5">
+                            { projectName }
+                        </Typography>
+                        <Typography variant="body1">
+                            { projectDesc }
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <Tooltip title="open github link" aria-label="open github link">
+                            <IconButton target="_blank" href={githubLink} id="icon"><GitHubIcon /></IconButton>
+                        </Tooltip>
+                    </CardActions>
+                </Card>
+            );
+        }
+
+        const useStyles = makeStyles(theme => ({
+            main: {
+                fontWeight: 600
+            },
+            card: {
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                backgroundColor: theme.palette.primary.main,
+                color: theme.palette.primary.contrastText,
+                transition: "0.3s",
+                '& h5': {
+                    // fontWeight: 600,
+                    transition: "0.3s"
+                },
+                '& #icon': {
+                    color: theme.palette.primary.contrastText,
+                    transition: "0.3s"
+                },
+                '&:hover': {
+                    '& h5': {
+                        transition: "0.3s",
+                        color: theme.palette.text.secondary,
+                    },
+                    '& #icon': {
+                        transition: "0.3s",
+                        color: theme.palette.text.secondary,
+                    },
+                    transform: "translate(0, -15px)",
+                    transition: "0.3s",
+                }
+            },
+            cardExp: {
+                backgroundColor: theme.palette.primary.main,
+                color: theme.palette.primary.contrastText,
+            },
+            cardSocial: {
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                backgroundColor: theme.palette.primary.main,
+                color: theme.palette.primary.contrastText,
+                '& #icon': {
+                    transition: "0.3s",
+                    color: theme.palette.primary.contrastText
+                },
+                '& #icon:hover': {
+                    transition: "0.3s",
+                    color: theme.palette.text.secondary,
+                },
+            },
+            sectionTitle: {
+                color: theme.palette.text.section,
+                fontWeight: 700
+            },
+            icon: {
+                color: theme.palette.primary.contrastText,
+                transition: "0.3s",
+                '&:hover': {
+                    transition: "0.3s",
+                    color: theme.palette.text.secondary,
+                }
+            },
+            relevantTech: {
+                color: theme.palette.text.section
+            }
+        }));
+
+        function Copyright() {
+            return (
+                <Box mb={6}>
+                    <Typography variant="body1" color="textPrimary" align="center">
+                        {'copyright © '}
+                            hopesishu
+                        {' '}
+                        {new Date().getFullYear()}
+                    </Typography>
+                </Box>
+            );
+        }
+
+        function GitHubIcon(props) {
+            return (
+                <SvgIcon {...props}>
+                    <path xmlns="http://www.w3.org/2000/svg" d="M10.07031,20.50291a1.00008,1.00008,0,0,0-1.18115-.9834c-1.30908.24024-2.96191.27637-3.40137-.958a5.70754,5.70754,0,0,0-1.83691-2.415,1.20073,1.20073,0,0,1-.1665-.10938,1,1,0,0,0-.93067-.64551H2.54883a.99965.99965,0,0,0-1,.99512c-.00391.81543.811,1.33789,1.1416,1.51465a4.4408,4.4408,0,0,1,.92383,1.35937c.36426,1.02344,1.42285,2.57617,4.46582,2.376.001.03516.00195.06836.00244.09863l.00439.26758a1,1,0,0,0,2,0l-.00488-.31836C10.07715,21.4951,10.07031,21.22068,10.07031,20.50291Zm10.667-15.126c.03174-.125.063-.26367.09034-.41992a6.27792,6.27792,0,0,0-.40821-3.293,1.002,1.002,0,0,0-.61572-.58007c-.356-.12012-1.67041-.35645-4.18408,1.25a13.86918,13.86918,0,0,0-6.354,0C6.76221.751,5.45459.9658,5.10205,1.07908a.99744.99744,0,0,0-.63135.584,6.3003,6.3003,0,0,0-.40332,3.35644c.02442.12793.05078.2461.07813.35449A6.26928,6.26928,0,0,0,2.89014,9.20311a8.42168,8.42168,0,0,0,.04248.92187c.334,4.60254,3.334,5.98438,5.42431,6.459-.04345.125-.083.25878-.11816.40039a1.00023,1.00023,0,0,0,1.94238.47851,1.6784,1.6784,0,0,1,.46778-.87793.99947.99947,0,0,0-.5459-1.74512c-3.4541-.39453-4.95362-1.80175-5.1792-4.89843a6.61076,6.61076,0,0,1-.03369-.73828,4.25769,4.25769,0,0,1,.91943-2.71289,3.022,3.022,0,0,1,.1958-.23145.99988.99988,0,0,0,.188-1.02441,3.3876,3.3876,0,0,1-.15527-.55567A4.09356,4.09356,0,0,1,6.1167,3.06346a7.54263,7.54263,0,0,1,2.415,1.17968,1.00877,1.00877,0,0,0,.82764.13282,11.77716,11.77716,0,0,1,6.17285.001,1.00549,1.00549,0,0,0,.83056-.13769,7.572,7.572,0,0,1,2.40528-1.19043,4.03977,4.03977,0,0,1,.0874,1.57812,3.205,3.205,0,0,1-.16895.60743.9999.9999,0,0,0,.188,1.02441c.07715.08691.1543.18066.22363.26855A4.12186,4.12186,0,0,1,20,9.20311a7.03888,7.03888,0,0,1-.0376.77734c-.22021,3.05566-1.72558,4.46387-5.1958,4.85937a1,1,0,0,0-.54541,1.7461,1.63079,1.63079,0,0,1,.46631.9082,3.06079,3.06079,0,0,1,.09229.81934v2.334C14.77,21.2949,14.77,21.78025,14.77,22.00291a1,1,0,1,0,2,0c0-.2168,0-.69238.00977-1.33984V18.31346a4.8815,4.8815,0,0,0-.15479-1.31153,4.25638,4.25638,0,0,0-.11621-.416,6.51258,6.51258,0,0,0,5.44531-6.42383A8.69677,8.69677,0,0,0,22,9.20311,6.13062,6.13062,0,0,0,20.7373,5.37693Z"/>
+                </SvgIcon>
+            );
+        }
+
+        function LinkedInIcon(props) {
+            return (
+                <SvgIcon {...props}>
+                    <path xmlns="http://www.w3.org/2000/svg" d="M17.5,8.999a5.41868,5.41868,0,0,0-2.56543.64453A.99918.99918,0,0,0,14,8.999H10a.99943.99943,0,0,0-1,1v12a.99942.99942,0,0,0,1,1h4a.99942.99942,0,0,0,1-1v-5.5a1,1,0,1,1,2,0v5.5a.99942.99942,0,0,0,1,1h4a.99942.99942,0,0,0,1-1v-7.5A5.50685,5.50685,0,0,0,17.5,8.999Zm3.5,12H19v-4.5a3,3,0,1,0-6,0v4.5H11v-10h2v.70313a1.00048,1.00048,0,0,0,1.78125.625A3.48258,3.48258,0,0,1,21,14.499Zm-14-12H3a.99943.99943,0,0,0-1,1v12a.99942.99942,0,0,0,1,1H7a.99942.99942,0,0,0,1-1v-12A.99943.99943,0,0,0,7,8.999Zm-1,12H4v-10H6ZM5.01465,1.542A3.23283,3.23283,0,1,0,4.958,7.999h.02832a3.23341,3.23341,0,1,0,.02832-6.457ZM4.98633,5.999H4.958A1.22193,1.22193,0,0,1,3.58887,4.77051c0-.7461.55957-1.22852,1.42578-1.22852A1.2335,1.2335,0,0,1,6.41113,4.77051C6.41113,5.5166,5.85156,5.999,4.98633,5.999Z"/>
+                </SvgIcon>
+            );
+        }
+
+        function GoogleIcon(props) {
+            return (
+                <SvgIcon {...props}>
+                    <path xmlns="http://www.w3.org/2000/svg" d="M22.60229,10.00391a1.00005,1.00005,0,0,0-.98388-.82227H12.2a.99974.99974,0,0,0-1,1V14.0498a.99974.99974,0,0,0,1,1h3.9624a3.65162,3.65162,0,0,1-1.13183,1.1875A5.0604,5.0604,0,0,1,12.2,17.02246a4.93525,4.93525,0,0,1-4.64624-3.4378L7.55347,13.583a4.90382,4.90382,0,0,1,0-3.167l.00024-.00165A4.9356,4.9356,0,0,1,12.2,6.97754,4.37756,4.37756,0,0,1,15.3313,8.19531a1.00053,1.00053,0,0,0,1.39844-.01562L19.5979,5.31152a.99918.99918,0,0,0-.02539-1.43847A10.62342,10.62342,0,0,0,12.2,1,10.949,10.949,0,0,0,2.37134,7.05878l-.00147.00177A10.92175,10.92175,0,0,0,1.2,12a11.07862,11.07862,0,0,0,1.16992,4.93945l.00147.00177A10.949,10.949,0,0,0,12.2,23a10.5255,10.5255,0,0,0,7.29468-2.687l.00073-.00049.00079-.00085.00019-.00013.00006-.00012a10.78575,10.78575,0,0,0,3.30365-8.08386A12.51533,12.51533,0,0,0,22.60229,10.00391ZM12.2,3a8.68219,8.68219,0,0,1,5.2085,1.67285L15.95483,6.126A6.46322,6.46322,0,0,0,12.2,4.97754,6.88648,6.88648,0,0,0,6.21069,8.52832L5.14148,7.69958l-.585-.45367A8.95257,8.95257,0,0,1,12.2,3ZM3.67944,14.90332a9.02957,9.02957,0,0,1,0-5.80664l1.78223,1.38184a6.85381,6.85381,0,0,0,0,3.042ZM12.2,21A8.9528,8.9528,0,0,1,4.5564,16.75391l.37841-.29352,1.27588-.98969A6.88482,6.88482,0,0,0,12.2,19.02246a7.27662,7.27662,0,0,0,3.30573-.75079L17.19739,19.585A8.88989,8.88989,0,0,1,12.2,21Zm6.52588-2.76074-.183-.142L17.16553,17.028a5.60626,5.60626,0,0,0,1.39966-2.79553.9998.9998,0,0,0-.9834-1.18262H13.2V11.18164h7.54883c.03418.3457.05127.69531.05127,1.0459A9.05156,9.05156,0,0,1,18.72583,18.23926Z"/>
+                </SvgIcon>
+            );
+        }
+
+        function App() {
+            const classes = useStyles();
+            return (
+                <Container maxWidth="md">
+                    <div style={{ marginTop: 24 }}>
+                        <Typography variant="h1" color="textPrimary" className={classes.main}>
+                            <div id="main"></div>
+                        </Typography>
+                        <Typography variant="h3" gutterBottom className={classes.sectionTitle}>
+                            i create things that i wish existed
+                        </Typography>
+                        <AboutMeSection />
+                        <ExperienceSection /> 
+                        <ProjectsSection />
+                        <Copyright />
+                    </div>
+                </Container>
+            );
+        }
+
+        ReactDOM.render(
+            <ThemeProvider theme={theme}>
+                {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+                <CssBaseline />
+                <App />
+            </ThemeProvider>,
+            document.querySelector('#root'),
+        );
+        
+
+        var app = document.getElementById('main');
+        var customNodeCreator = function(character) {
+            return document.createTextNode(character);
+        }
+        var typewriter = new Typewriter(app, {
+            loop: false,
+            delay: 75,
+            onCreateTextNode: customNodeCreator,
+        });
+
+        typewriter
+        .typeString("hello, i'm hope")
+        .pauseFor(300)
+        .start();
+    </script>
+  </body>
+</html>
