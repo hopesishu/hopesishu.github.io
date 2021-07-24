@@ -50,7 +50,10 @@
             List,
             ListItem,
             ListItemText,
-            Hidden
+            Hidden,
+            Fade,
+            Slide,
+            Collapse
         } = MaterialUI;
 
         // Create a theme instance.
@@ -193,7 +196,7 @@
             }
 
             return (
-                <Box style={{minHeight: "60vh"}} mb={4}>
+                <Box mb={4}>
                     <Typography variant="h3" gutterBottom className={classes.sectionTitle}>
                         {'// experience'}
                     </Typography>
@@ -408,8 +411,9 @@
             },
             relevantTech: {
                 color: theme.palette.text.section
-            }
+            },
         }));
+
 
         function Copyright() {
             return (
@@ -456,13 +460,19 @@
                         <Typography variant="h1" color="textPrimary" className={classes.main}>
                             <div id="main"></div>
                         </Typography>
-                        <Typography variant="h3" gutterBottom className={classes.sectionTitle}>
-                            i create things that i wish existed
-                        </Typography>
-                        <AboutMeSection />
-                        <ExperienceSection /> 
-                        <ProjectsSection />
-                        <Copyright />
+                        <Fade in timeout={1000}>
+                            <Typography variant="h3" gutterBottom className={classes.sectionTitle}>
+                                i create things that i wish existed
+                            </Typography>
+                        </Fade>
+                        <Fade in timeout={{ enter: 2500 }}>
+                            <div>
+                                <AboutMeSection />
+                                <ExperienceSection />
+                                <ProjectsSection />
+                                <Copyright />
+                            </div>
+                        </Fade>
                     </div>
                 </Container>
             );
